@@ -52,22 +52,22 @@ services:
         - ./conf/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/php-ini-overrides.ini
         - ./conf/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
         
-   redis:
+    redis:
      container_name: "redis"
      image: redis:4.0
 
-   pma:
-    image: phpmyadmin/phpmyadmin
-    container_name: "phpmyadmin"
-    environment:
-      PMA_HOST: db
-      PMA_USER: ${MYSQL_USER}
-      PMA_PASSWORD: ${MYSQL_PASSWORD}D
-      PHP_UPLOAD_MAX_FILESIZE: 1G
-      PHP_MAX_INPUT_VARS: 1G
-      PMA_PORT: 3306
-   ports:
-    - '8181:80'
+    pma:
+      image: phpmyadmin/phpmyadmin
+      container_name: "phpmyadmin"
+      environment:
+        PMA_HOST: db
+        PMA_USER: root
+        PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        PHP_UPLOAD_MAX_FILESIZE: 1G
+        PHP_MAX_INPUT_VARS: 1G
+        PMA_PORT: 3306
+      ports:
+         - '8181:80'
 
 volumes:
   wordpress:
