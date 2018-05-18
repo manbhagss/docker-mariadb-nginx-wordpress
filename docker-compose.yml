@@ -65,6 +65,9 @@ services:
       PMA_PASSWORD: ${MYSQL_PASSWORD}D
       PHP_UPLOAD_MAX_FILESIZE: 1G
       PHP_MAX_INPUT_VARS: 1G
+      PMA_PORT: 3306
+   ports:
+    - '8181:80'
 
 volumes:
   wordpress:
