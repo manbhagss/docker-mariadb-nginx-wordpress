@@ -77,6 +77,23 @@ portainer:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '9000:9000'
+  
+  elasticsearch:
+    image: elasticsearch:5.6.9
+    environment:
+      ES_JAVA_OPTS: "-Xms500m -Xmx500m"
+    ulimits:
+      memlock:
+       soft: -1
+       hard: -1
+
+  kibana:
+    image: kibana:5.6.9
+    depends_on:
+      - elasticsearch
+    ports:
+      - '5601:5601'
+      
 volumes:
   wordpress:
   run_vol:
