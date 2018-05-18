@@ -27,6 +27,8 @@ services:
       image: nginx:alpine
       restart: always
       container_name: nginx
+      links:
+        - redis    # This is an experimentation 
       volumes:
         - wordpress:/var/www/html
         - ./data/wordpress/wp-content:/var/www/html/wp-content
@@ -49,6 +51,10 @@ services:
         - ./data/wordpress/phpinfo.php:/var/www/html/phpinfo.php
         - ./conf/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/php-ini-overrides.ini
         - ./conf/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+        
+   redis:
+     container_name: "redis"
+     image: redis:4.0
 
 volumes:
   wordpress:
