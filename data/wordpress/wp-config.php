@@ -76,7 +76,6 @@ define('NONCE_SALT',       'e)Swo+i}++r,7|@43-!LtOD3$H;8~&LVrr?4aJW#[5ZUM/Vy D~@
  * Solo numeri, lettere e sottolineatura!
  */
 $table_prefix  = 'wp_';
-
 /**
  * Per gli sviluppatori: modalità di debug di WordPress.
  *
@@ -84,9 +83,14 @@ $table_prefix  = 'wp_';
  * durante lo sviluppo.
  * È fortemente raccomandato agli svilupaptori di temi e plugin di utilizare
  * WP_DEBUG all’interno dei loro ambienti di sviluppo.
- */
-define('WP_DEBUG', false);
+ */ 
 
+//Changing these for enabling EKL Stack monitoring of the website
+
+define('WP_DEBUG', true);
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'SAVEQUERIES', true );
 
 /** Disabilita revisioni (max 3) **/
 define('AUTOSAVE_INTERVAL', 300 ); // seconds
